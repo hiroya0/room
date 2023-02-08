@@ -1,0 +1,29 @@
+<% if user_signed_in? %>
+
+<header>
+<h2>Potepan Shere</h2>
+<a><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></a>
+<a><%= link_to "部屋の新規登録", "/rooms/new" %></a>
+<a><%= link_to "部屋の登録済み一覧", "/rooms/" %></a>
+</header>
+
+<div class = toppage>
+<p class = top-logo>　Potepan Shareで<br>まだ体験したことのない<br>
+　　旅をしよう</p>
+</div>
+
+#検索バーと検索ボタンの実装
+
+<h3>おすすめエリア</h3>
+
+<% else %>
+<header>
+<h2>Potepan Shere</h2>
+<a><%= link_to "ログイン", "/users/sign_in" %></a>
+<a><%= link_to "新規登録", "/users/sign_up" %></a>
+</header>
+<div class = toppage>
+<p class = top-logo>　Potepan Shareで<br>まだ体験したことのない<br>
+　　旅をしよう</p>
+</div>
+<% end %>
