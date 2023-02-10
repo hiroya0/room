@@ -1,0 +1,31 @@
+<h2>部屋詳細</h2>
+<table>
+<tr>
+<th>画像</th>
+<% if @room.room_image? %>  
+<td>Room_image:</td>
+    <%= image_tag @room.room_image.url %>
+<% end %>
+</tr>
+  <th>名前</th>
+    <td><%= @room.name %></td>
+  </tr>
+  <tr>
+    <th>部屋詳細</th>
+    <td><%= @room.introduction %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @room.address %></td>
+  </tr>
+  <tr>
+    <th>価格</th>
+    <td><%= @room.price %></td>
+  </tr>
+</table>
+
+<div>
+  <ul>
+    <li><%= link_to "部屋の登録済み一覧に戻る", :rooms %></li>
+  </ul>
+</div>

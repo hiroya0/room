@@ -1,25 +1,37 @@
 <h3>部屋の登録済み一覧</h3>
  
+<% if flash[:success] %>
+   <p class="notice"><%= flash[:success] %></p>
+ <% end %>
+
  <table>
    <thead>
-     <tr>
+     <th>画像</th>
+     <th>id</th>
        <th>名前</th>
        <th>部屋詳細</th>
        <th>住所</th>
        <th>価格</th>
-       <th>ユーザーid</th>
+       <th>作成日</th>
      </tr>
    </thead>
  
    <tbody>
+        <tr>
      <% @rooms.each do |room| %>
-       <tr>
+        <td><%= image_tag room.room_image.url ,size: "200x150" %></td>
+       
+       <td><%= room.id %></td>
          <td><%= room.name %></td>
          <td><%= room.introduction %></td>
          <td><%= room.address %></td>
          <td><%= room.price %></td>
-         <td><%= room.user_id %></td>
-       </tr>
+         <td><%= room.created_at.to_s(:datetime_jp) %></td>
+         <td><%= link_to "参照", room %></td>
+         <td><%= link_to "編集", [:edit, room] %></td>
+         <td><%= link_to "削除", room, method: :delete, 
+         data: { confirm: "本当に削除しますか？" } %> </td>
+         </tr>
      <% end %>
    </tbody>
  </table>
