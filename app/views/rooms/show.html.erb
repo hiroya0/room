@@ -3,8 +3,10 @@
 <tr>
 <th>画像</th>
 <% if @room.room_image? %>  
-<td>Room_image:</td>
-    <%= image_tag @room.room_image.url %>
+<td>
+    <%= image_tag @room.room_image.url,size: "200x150" %></td>
+    <% else %>
+    <td><%= image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" ,size: "200x150" %></td>
 <% end %>
 </tr>
   <th>名前</th>
