@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   resources :users
   resources :reservations
   resources  :rooms do
+  
   collection do
     get 'search'
   end
+  end
 
 end
-end
+

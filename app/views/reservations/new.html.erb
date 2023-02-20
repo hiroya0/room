@@ -18,15 +18,15 @@
   <td><%= @room.introduction %></td>
 </tr>
 <tr>
-  <td><%= @room.price %>/日</td>
+  <td><%= @room.price %>円</td>
 </tr>
 </table>
 
-<div id="reservation_new">
- <h2>部屋を予約する</h2>
+
+<h2>部屋を予約する</h2>
  <%= form_with model: @reservation do |f| %>    
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :id %>
   <%= f.hidden_field :price, value: @room.price %>
     <table>
      <tr>
@@ -48,5 +48,5 @@
      <ul>
        <li><%= f.submit "予約する"%></li>
      </ul>
-   </div>
+    </div>
  <% end %>

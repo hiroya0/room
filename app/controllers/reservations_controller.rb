@@ -1,34 +1,42 @@
 class ReservationsController < ApplicationController
-    def index
-        @user = current_user
-        @reservations = Reservation.all
-        end
-    
-      def create
-       
-        @user = current_user
-        
-        @reservation = Reservation.new(params.require(:reservation).permit(:startday, :endday, :people, :totalprice, :totalday))
-        
-        if @reservation.save!
-            flash[:success] = "予約が完了しました"
-            redirect_to reservations_path
-        else
-            render "rooms/show"
-        end
+  def index
+      @user = current_user
+      @reservations = Reservation.all
+      
+      
+
       end
+  
+    def create
+      @user = current_user
+      @reservation = Reservation.new(reservation_params)
+      binding.pry
+      if @reservation.save
+          flash[:success] = "予約が完了しました"
+          redirect_to reservation_path
+        else
+          flash[:success] = "予約に失敗しました"
+          @rooms = Room.all
+          render 'rooms/index'
+      end
+    end
+  
+
+    def new
     
-      def new
-        binding.pry
-        @user = current_user
-        binding.pry
-        @reservation = Reservation.new(params.require(:reservation).permit(:startday, :endday, :people, :totalprice, :totalday))
-        binding.pry
-        @room = Room.find(params[:id])
-     end
-    
-    
-    
+      @user = current_user
+      
+      @reservation = Reservation.new(reservation_params)
+     
+      @room = Room.find_by(params[:room_id])
+    end
+  
+    private
+
+  def reservation_params
+    params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id)
+  end
+  
 
 
 end
