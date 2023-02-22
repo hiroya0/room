@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
   
     def create
       
-      @room = Room.find_by(params[:id])
+      @room = Room.find(params[:id])
       @user = User.find(current_user.id)
       @reservation = Reservation.new(params.require(:reservation).permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
       
@@ -29,15 +29,14 @@ class ReservationsController < ApplicationController
     def new
       
       @user = User.find(current_user.id)
-      binding.pry
-      @room = Room.find_by(params[:id])
-      binding.pry
+      
       @reservation = Reservation.new(params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
-      binding.pry
+      
+      @room = Room.find(params[:id])
     end
 
     def destroy
-      @reservation = Reservation.find_by(params[:reservation_id])
+      @reservation = Reservation.find(params[:reservation_id])
       @reservation.destroy
       flash[:success] = "予約を削除しました"
       redirect_to :reservations
@@ -46,7 +45,7 @@ class ReservationsController < ApplicationController
     def show
       @user = User.find(current_user.id)
       @room = Room.all
-      @reservation = Reservation.find_by(params[:reservation_id])
+      @reservation = Reservation.find(params[:reservation_id])
 
       
       

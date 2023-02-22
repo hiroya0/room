@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to:'users#index'
   get 'rooms/index'
+  get 'rooms/new/:id'=> 'rooms#new',as:'rooms_new'
   get 'users/index'
   get 'reservations/new'
   get 'reservations/index'
@@ -11,12 +12,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   resources :reservations
-  resources :rooms do
-  
-  collection do
-    get 'search'
-  end
-  end
+  resources :rooms 
 
 end
 

@@ -1,35 +1,34 @@
 <table>
 
 <tr>
-<% if @reservation.room.room_image? %>  
+<% if @room.room_image? %>  
 <td>
-    <%= image_tag @reservation.room.room_image.url,size: "200x150" %></td>
+    <%= image_tag @room.room_image.url,size: "200x150" %></td>
     <% else %>
     <td>"画像なし"</td>
     <% end %>
    </td>
 </tr>
 <tr>
-  <td><%= @reservation.room.name %></td>
+  <td><%= @room.name %></td>
 </tr>
 <tr>
-  <td><%= @reservation.room.address %></td>
+  <td><%= @room.address %></td>
 </tr>
 <tr>
-  <td><%= @reservation.room.introduction %></td>
+  <td><%= @room.introduction %></td>
 </tr>
 <tr>
-  <td><%= @reservation.room.price %>円</td>
+  <td><%= @room.price %>円</td>
 </tr>
 
 </table>
 
 
 <h2>部屋を予約する</h2>
- <%= form_with model: @reservation do |f| %>    
-  <%= f.hidden_field :user_id, current_user.id %>
-  <%= f.hidden_field :room_id, @room.id%>
-  <%= f.hidden_field :price, @room.price %>
+ <%= form_with model: @reservation do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>    
+  <%= f.hidden_field :id, value: @room.id%>
     <table>
      <tr>
        <th><%= f.label :startday ,"開始日" %></th>
