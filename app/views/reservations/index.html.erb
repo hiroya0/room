@@ -1,33 +1,32 @@
+<% if flash[:success] %>
+   <p class="notice"><%= flash[:success] %></p>
+ <% end %>
 <h2>予約履歴</h2>
 <table>
 <thead>
   <th>予約した部屋</th>
   <th>部屋名</th>
-  <th>開始日</th>
-  <th>終了日</th>
+  <th>予約人数</th>
+  <th>チェックイン</th>
+  <th>チェックアウト</th>
   <th>予約確定日時</th>
  </tr>
 </thead>
  
 <tbody>
  <tr>
- <% @reservations.each do |reservation| %> 
-  <% @rooms = Room.where(id: reservation.user_id) %>
-  <% @rooms = Room.where(id: reservation.room_id) %>
-  
-  <% if @room.room_image? %>  
-  <td><%= image_tag @room.room_image.url,size: "200x150" %></td>
-    <% else %>
-    <td>"画像なし"</td>
-  <% end %>
-
-  <td><%= reservation.room.name %></td>
-  <td><%= reservation.startday %></td>
+ <% @reservations.each do |reservation| %>
+ 
+  <td><%= image_tag reservation.room.room_image.url,size: "200x150" %></td>
+  <td><%= reservation.room.name  %></td>
+  <td><%= reservation.people  %></td>
+  <td><%= reservation.startday  %></td>
   <td><%= reservation.endday %></td>
-  <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
- <% end %>
-  <% end %>
-  </tr>
+  <td><%= reservation.created_at.to_s %></td>
+  <td><%= link_to "削除", reservation, method: :delete, 
+         data: { confirm: "本当に削除しますか？" } %> </td>
+</tr>
+<% end %>
 
 </tbody>
 </table>

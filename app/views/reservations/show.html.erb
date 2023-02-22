@@ -3,6 +3,7 @@
 <% end %>
 
 <table>
+
   <th>開始</th>
     <td><%= @reservation.startday %></td>
   </tr>
@@ -12,14 +13,16 @@
   </tr>
   <tr>
     <th>宿泊日数</th>
-    <td><%=  @totalday = (@reservation.endday - @reservation.startday).to_i %></td>
+    <td><%=(@reservation.endday - @reservation.startday).to_i %>円</td>
   </tr>
   <tr>
     <th>人数</th>
     <td><%= @reservation.people %></td>
   </tr>
   <tr>
+  
   <th>料金</th>
-  <td><%= @totalprice = @reservation.room.price * @reservation.people * (@reservation.endday - @reservation.startday).to_i %></td>
-</tr>
+  <td><%= @reservation.room.price * @reservation.people * (@reservation.endday - @reservation.startday).to_i %>円</td>
+  
+  </tr>
 </table>
