@@ -26,9 +26,9 @@
 
 
 <h2>部屋を予約する</h2>
- <%= form_with model: @reservation do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>    
-  <%= f.hidden_field :id, value: @room.id%>
+ <%= form_for @reservation,:url => {:action => :new} do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :id, value: @room.id %>
     <table>
      <tr>
        <th><%= f.label :startday ,"開始日" %></th>
@@ -47,7 +47,8 @@
    </table>
    <div>
      <ul>
-       <li><%= f.submit "予約する"%></li>
+     <%= f.submit "予約を確定",{controller: 'reservations', action: 'show'} %>
      </ul>
     </div>
+
  <% end %>

@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
       
       @room = Room.find(params[:id])
       @user = User.find(current_user.id)
-      @reservation = Reservation.new(params.require(:reservation).permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
+      @reservation = Reservation.new(params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
       
      
       if @reservation.save
@@ -28,11 +28,12 @@ class ReservationsController < ApplicationController
 
     def new
       
+      @room = Room.find(params[:id])
       @user = User.find(current_user.id)
-      
+     
       @reservation = Reservation.new(params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
       
-      @room = Room.find(params[:id])
+      
     end
 
     def destroy
@@ -43,12 +44,11 @@ class ReservationsController < ApplicationController
     end
 
     def show
-      @user = User.find(current_user.id)
-      @room = Room.all
-      @reservation = Reservation.find(params[:reservation_id])
-
-      
-      
+      binding.pry
+      @reservation = Reservation.new(reservation_params)
+      binding.pry
+      @room = @reservation.room
+      binding.pry
       
     end
     

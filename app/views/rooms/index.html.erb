@@ -31,7 +31,7 @@
          <td><%= link_to "編集", [:edit, room] %></td>
          <td><%= link_to "削除", room, method: :delete, 
          data: { confirm: "本当に削除しますか？" } %> </td>
-         <td><%= link_to "予約する", "/reservations/new"  %></td>
+         <td><%= link_to "予約画面へ", {controller: 'reservations', action: 'new', id: room.id} %></td>
          
          </tr>
      <% end %>
