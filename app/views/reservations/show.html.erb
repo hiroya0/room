@@ -1,19 +1,20 @@
 <% if flash[:success] %>
 <p class="notice"><%= flash[:success] %></p>
 <% end %>
+<h2>予約詳細</h2>
 
 <table>
 
-  <th>開始</th>
+  <th>チェックイン</th>
     <td><%= @reservation.startday %></td>
   </tr>
   <tr>
-    <th>終了日</th>
+    <th>チェックアウト</th>
     <td><%= @reservation.endday %></td>
   </tr>
   <tr>
     <th>宿泊日数</th>
-    <td><%=(@reservation.endday - @reservation.startday).to_i %>人</td>
+    <td><%=(@reservation.endday.strftime("%Y年 %m月 %d日") - @reservation.startday.strftime("%Y年 %m月 %d日")).to_i %>日</td>
   </tr>
   <tr>
     <th>人数</th>
@@ -22,7 +23,11 @@
   <tr>
   
   <th>料金</th>
-  <td><%= @reservation.room.price * @reservation.people * (@reservation.endday - @reservation.startday).to_i %>円</td>
+  <td><%= @totalprice = @reservation.room.price * @reservation.people * (@reservation.endday - @reservation.startday).to_i %></td>
+  </tr>
+  </table>
+  
   
   </tr>
+ 
 </table>

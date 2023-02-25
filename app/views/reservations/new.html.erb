@@ -23,32 +23,27 @@
 </tr>
 
 </table>
-
-
-<h2>部屋を予約する</h2>
- <%= form_for @reservation,:url => {:action => :new} do |f| %>
+<%= form_with model: @reservation do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :id, value: @room.id %>
-    <table>
-     <tr>
-       <th><%= f.label :startday ,"開始日" %></th>
-       <td><%= f.date_field :startday %></td>
-     </tr>
- 
-     <tr>
-       <th><%= f.label :endday ,"終了日" %></th>
-       <td><%= f.date_field :endday %></td>
-     </tr>
- 
-     <tr>
-       <th><%= f.label :people ,"人数" %></th>
-       <td><%= f.number_field :people %></td>
-     </tr>
-   </table>
-   <div>
-     <ul>
-     <%= f.submit "予約を確定",{controller: 'reservations', action: 'show'} %>
-     </ul>
-    </div>
+  <%= f.hidden_field :room_id, value: @room.id%>
+  
+  <table>
+  <tr>
+    <th><%= f.label :startday ,"開始日" %></th>
+    <td><%= f.date_field :startday %></td>
+  </tr>
 
- <% end %>
+  <tr>
+    <th><%= f.label :endday ,"終了日" %></th>
+    <td><%= f.date_field :endday %></td>
+  </tr>
+
+  <tr>
+    <th><%= f.label :people ,"人数" %></th>
+    <td><%= f.number_field :people %></td>
+  </tr>
+</table>
+  <%= f.submit "予約を確定"%>
+  <%= link_to "ルーム詳細に戻る", :back %>
+<% end %>
+

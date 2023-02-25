@@ -7,6 +7,7 @@
   <th>予約した部屋</th>
   <th>部屋名</th>
   <th>予約人数</th>
+  <th>合計金額</th>
   <th>チェックイン</th>
   <th>チェックアウト</th>
   <th>予約確定日時</th>
@@ -17,11 +18,13 @@
  <tr>
  <% @reservations.each do |reservation| %>
  
+
   <td><%= image_tag reservation.room.room_image.url,size: "200x150" %></td>
   <td><%= reservation.room.name  %></td>
   <td><%= reservation.people  %></td>
   <td><%= reservation.startday  %></td>
   <td><%= reservation.endday %></td>
+  <td><%= reservation.room.price * reservation.people * (reservation.endday.strftime("%Y年 %m月 %d日") - reservation.startday.strftime("%Y年 %m月 %d日")).to_i %></td>
   <td><%= reservation.created_at.to_s %></td>
   <td><%= link_to "削除", reservation, method: :delete, 
          data: { confirm: "本当に削除しますか？" } %> </td>

@@ -27,11 +27,11 @@
          <td><%= room.address %></td>
          <td><%= room.price %></td>
          <td><%= room.created_at.to_s(:datetime_jp) %></td>
-         <td><%= link_to "参照", room %></td>
+         <td><%= link_to "予約する", room %></td>
          <td><%= link_to "編集", [:edit, room] %></td>
          <td><%= link_to "削除", room, method: :delete, 
          data: { confirm: "本当に削除しますか？" } %> </td>
-         <td><%= link_to "予約画面へ", {controller: 'reservations', action: 'new', id: room.id} %></td>
+         
          
          </tr>
      <% end %>

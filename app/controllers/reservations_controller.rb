@@ -1,40 +1,35 @@
 class ReservationsController < ApplicationController
   def index
     @user = User.find(current_user.id)
-    
-      @reservations = Reservation.all
-      
-      end
+    @reservations = Reservation.all
+  end
   
-    def create
-      
-      @room = Room.find(params[:id])
+      def new
       @user = User.find(current_user.id)
-      @reservation = Reservation.new(params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
-      
-     
-      if @reservation.save
+        @reservation = Reservation.new(params.require(:reservation).permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
+      end
+
+    def create
+      @room = Room.find(params[:reservation][:room_id])
+      @user = User.find(current_user.id)
+      @reservation = Reservation.new(params.require(:reservation).permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))     
+      binding.pry
+      if @reservation.save!
+        
+       flash[:success] = "予約が完了しました"
        
-          flash[:success] = "予約が完了しました"
-          redirect_to  controller: :reservations, action: :show
-          
-        else
-          flash[:success] = "予約に失敗しました"
-          @rooms = Room.all
-          redirect_to :rooms
+       binding.pry
+       redirect_to @reservation
+       
+
+      else
+      flash[:success] = "予約に失敗しました"
+       render 'rooms/show'
       end
     end
   
 
-    def new
-      
-      @room = Room.find(params[:id])
-      @user = User.find(current_user.id)
-     
-      @reservation = Reservation.new(params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))
-      
-      
-    end
+   
 
     def destroy
       @reservation = Reservation.find(params[:reservation_id])
@@ -44,21 +39,12 @@ class ReservationsController < ApplicationController
     end
 
     def show
-      binding.pry
-      @reservation = Reservation.new(reservation_params)
-      binding.pry
-      @room = @reservation.room
-      binding.pry
+      @user_id = current_user.id
+        @reservation = Reservation.new params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id,)
       
     end
     
-    private
-
-  def reservation_params
-    @rooms = Room.all
-    params.permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id,)
-  end
-  
+    
 
 
 end
