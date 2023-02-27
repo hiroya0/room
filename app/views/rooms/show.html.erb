@@ -14,7 +14,7 @@
     <td><%= @room.name %></td>
 </tr>
 <tr>
-  <th>料金</th>
+  <th>一人当たり料金</th>
   <td><%= @room.price %></td>
 </tr>
 <tr>
@@ -53,11 +53,13 @@
      </tr>
    </table>
    <div>
-  <ul>
-     <%= f.submit "予約する"%>
-  </ul>
-    </div>
+   <ul>
+      <%= f.submit "予約する"%>
+   </ul>
+     </div>
   <ul>
     <li><%= link_to "部屋の登録済み一覧に戻る", :rooms %></li>
   </ul>
   <%end%>
+
+  

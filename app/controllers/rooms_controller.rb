@@ -22,8 +22,9 @@ class RoomsController < ApplicationController
   end
 
   def show
-    
+    binding.pry
 		@room = Room.find(params[:id]) 
+    binding.pry
 		@reservation = Reservation.new
    
   end

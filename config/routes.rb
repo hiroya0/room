@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   get 'rooms/index'
   
   get 'users/index'
-  get 'reservations/index'
-  post 'reservations/new'
-  get 'reservations/show'
+  get 'reservations', to: 'reservations#index'
+  post 'reservations/show', to: 'reservations#show'
+  get 'room/show'
   
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
