@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @rooms = Room.all
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result(distinct: true).includes(:user).order("created_at desc")
   end
+  
 
   def new
     

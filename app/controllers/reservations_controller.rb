@@ -1,9 +1,9 @@
 class ReservationsController < ApplicationController
   def index
-   @user_id = current_user.id
-   binding.pry
+    @user_id = current_user.id
+   
    @reservations = Reservation.all
-   binding.pry
+   
   end
   
     def create
@@ -15,6 +15,7 @@ class ReservationsController < ApplicationController
        redirect_to @reservation
       else
       flash[:success] = "予約に失敗しました"
+      @user = current_user
        render 'rooms/show'
       end
     end
@@ -29,9 +30,9 @@ class ReservationsController < ApplicationController
     def show
       flash[:success] = "予約が完了しました"
       @user_id = current_user.id
-      binding.pry
+      
       @reservation = Reservation.find(params[:id])
-      binding.pry
+     
     end
 
 end

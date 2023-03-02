@@ -4,7 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-  <%= f.label :nickname %><br />
+  <%= f.label :nickname,"名前"%><br />
   <%= f.text_field :nickname, autofocus: true %>
 </div>
 
@@ -16,7 +16,7 @@
   <div class="field">
     <%= f.label :password,"パスワード" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -31,4 +31,5 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<p><%= link_to "ログイン画面へ", "/users/sign_in" %></p>
+<p><%= link_to "ホーム画面へ", "/users/index" %></p>

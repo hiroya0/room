@@ -1,15 +1,19 @@
 class RoomsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
+
   def index
+    @user = current_user
     @rooms = Room.all
-    
+   
   end
 
   def new
+    @user = current_user
     @room = Room.new
   end
 
   def create
-    
+    @user = current_user
     @room = Room.new(params.require(:room).permit(:name, :introduction, :address, :price, :room_image))
     @room.user_id = current_user.id
     if @room.save
@@ -22,9 +26,9 @@ class RoomsController < ApplicationController
   end
 
   def show
-    binding.pry
+    @user = current_user
 		@room = Room.find(params[:id]) 
-    binding.pry
+    
 		@reservation = Reservation.new
    
   end
@@ -50,9 +54,17 @@ class RoomsController < ApplicationController
     redirect_to :rooms
   end
 
+  def search
+    @results = @q.result(distinct: true)
+  end
+
   private
   def room_params
     params.require(:room).permit(:name,:introduction,:price,:address,:room_image) 
+  end
+  
+  def set_q
+    @q = Room.ransack(params[:q])
   end
   
 end

@@ -2,14 +2,16 @@
    <p class="notice"><%= flash[:success] %></p>
  <% end %>
 <h2>予約履歴</h2>
+<p><%= link_to "部屋の登録済み一覧に戻る", "/rooms/index" %></p>
+<p><%= link_to "ホームへ戻る", :users %></p>
 <table>
 <thead>
   <th>予約した部屋</th>
   <th>部屋名</th>
   <th>予約人数</th>
-  <th>合計金額</th>
   <th>チェックイン</th>
   <th>チェックアウト</th>
+  <th>合計金額</th>
   <th>予約確定日時</th>
  </tr>
 </thead>
