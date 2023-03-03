@@ -51,7 +51,7 @@
   <td><%= reservation.startday  %></td>
   <td><%= reservation.endday %></td>
   <td><%= reservation.room.price * reservation.people * (reservation.endday - reservation.startday).to_i %></td>
-  <td><%= reservation.created_at.to_s %></td>
+  <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
   <td><%= link_to "削除", reservation, method: :delete, 
          data: { confirm: "本当に削除しますか？" } %> </td>
 </tr>

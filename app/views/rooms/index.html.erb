@@ -5,7 +5,7 @@
     <input type="checkbox" id="tab1"/>
     <label for="tab1">
     <%= current_user.nickname %>
-        <% if current_user.image? %>  
+    <% if current_user.image? %>  
         <div><%= image_tag current_user.image.url,size: "100x100" %></div>
         <% else %>
         <div><%= image_tag "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" %></div>
@@ -18,7 +18,6 @@
             <li><a><%= link_to "部屋の登録済み一覧", "/rooms/" %></a></li>
             <li><a><%= link_to "予約一覧", "/reservations/" %></a></li>
             <li><a><%= link_to "アカウント設定", "/users/show" %></a></li>
-            
         </ul>
     </div>
     
