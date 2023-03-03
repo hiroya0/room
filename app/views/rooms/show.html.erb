@@ -1,4 +1,5 @@
 <h2>部屋詳細</h2>
+<%= render "shared/error", obj: @reservation %>
 <table>
 <tr>
 <th>画像</th>
@@ -61,5 +62,3 @@
     <li><%= link_to "部屋の登録済み一覧に戻る", :rooms %></li>
   </ul>
   <%end%>
-
-  

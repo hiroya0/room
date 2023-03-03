@@ -34,23 +34,47 @@
 
 <div class = "search_index">
             
-            <%= search_form_for @q, url: search_rooms_path do |f| %>
-                <%= f.label :address_cont ,"都道府県で検索" %></br>
-                <%= f.search_field :address_cont%>
-            <p><%= f.submit "探す"%></p>
-            <% end %>
-</div>
-
-<div class = "search_index">
-            
-            <%= search_form_for @q, url: search_rooms_path do |f| %>
-                <%= f.label :name_or_introduction_cont ,"キーワード検索" %></br>
-                <%= f.search_field :name_or_introduction_cont%>
-            <p><%= f.submit "探す"%></p>
-            <% end %>
-</div>
+<%= search_form_for @q, url: search_rooms_path do |f| %>
+    <%= f.label :name_or_introduction_cont ,"キーワード検索" %></br>
+    <%= f.search_field :name_or_introduction_cont%>
+<p><%= f.submit "探す"%></p>
+<% end %>
 
 </div>
+
+<div class = "all_spots">
+
+<div class="item"> 
+    <div class="spot">    
+        <span>東京</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/tokyo.jpg" ), search_rooms_path(q:{address_cont: "東京"}) %>
+    </div>
+</div>
+
+<div class="item"> 
+    <div class="spot">  
+        <span>大阪</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/osaka.jpg"), search_rooms_path(q:{address_cont: "大阪"}) %>
+    </div>
+</div>
+
+<div class="item"> 
+    <div class="spot">
+        <span>京都</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/kyoto.jpg"), search_rooms_path(q:{address_cont: "京都"}) %>
+    </div>  
+</div>
+
+<div class="item"> 
+    <div class="spot">
+        <span>札幌</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/sapporo.jpg"), search_rooms_path(q:{address_cont: "札幌"}) %>
+    </div>          
+</div>
+
+</div>
+
+
 </body>
 <% else %>
 <header>

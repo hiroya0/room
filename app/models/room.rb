@@ -10,4 +10,9 @@ class Room < ApplicationRecord
       def self.ransackable_associations(auth_object = nil)
         ["reservations", "user"]
       end
+      validates :price, numericality: true ,presence: true
+      validates :name, presence: true
+      validates :address, presence: true
+      validates :introduction, presence: true
+      
 end

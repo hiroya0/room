@@ -50,3 +50,19 @@ header{
 	font-weight:bold;
 }
 
+.all_spots{
+	display: flex;
+}
+
+.spot{
+	margin: 10px 5px;
+}
+
+.spot img{
+	width: 100%;
+    height: 300px;
+}
+
+.item{
+	flex-basis: 100%;
+}
