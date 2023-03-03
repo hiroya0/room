@@ -5,18 +5,23 @@
         <% @results.each do |results| %>
                 
                     <div class = "search_room_img" >
+                    <% if results.room_image? %>
                        <%= image_tag results.room_image_url if results.room_image.present? %>
+                       <%else%>
+                       <p>"画像なし"</p>
+                    <%end%>
                     </div>
 
                     <div class = "search_room" >
                     <%= link_to results do %>
                         <h1><%= results.name %></h1>
                     <% end %>
+                        <h4>コメント<%= results.introduction %></h4>
                         <h4>エリア名：<%= results.address %></h4>
                         <h4>金額：<%= results.price %>円</h4>
                     </div>
-                
             </div>
         <% end %>
     </div>
+    <a href="javascript:history.back()">[戻る]</a>
 </div>

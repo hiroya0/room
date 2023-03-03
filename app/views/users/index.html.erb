@@ -6,6 +6,7 @@
     <div class = box_wrapper>  
     <input type="checkbox" id="tab1"/>
     <label for="tab1">
+    <%= current_user.nickname %>
         <% if current_user.image? %>  
         <div><%= image_tag current_user.image.url,size: "100x100" %></div>
         <% else %>
