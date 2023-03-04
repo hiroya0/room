@@ -7,37 +7,11 @@ header{
 	justify-content: space-between;
 }
 
-.box_wrapper input{
-	display: none; 
-}
-
-.box_wrapper{
-    margin: auto;
-}
-
-.box_wrapper label{
-	display: block;
-    font-weight: bold;
-    cursor :pointer;
-    margin-top: 10px;
-}
-
-.box_wrapper ul{
-	height: 0;
-    overflow-y: hidden;
-}
-
-.box_wrapper input:checked + label + ul {
-    height: auto;
-    background-color:#e0fdff;
-}
-
 .top{
 	background-image: url(https://images.microcms-assets.io/assets/03297a0e5b65401a9126d29bcac1d2e0/6f52943cffcf475789d774fae6c52196/%E3%82%B5%E3%83%A0%E3%83%8D%E3%82%A4%E3%83%AB_%E3%82%84%E3%81%A3%E3%81%A4.jpg?w=1024);
 	background-size: cover;
 	padding-bottom:60% ;
 }
-
 
 .toppage{
 	display: flex;
@@ -65,4 +39,35 @@ header{
 
 .item{
 	flex-basis: 100%;
+}
+
+ ul.ddmenu li {
+	display: inline-block; /* ★横並びに配置する */
+	list-style-type: none; /* ★リストの先頭記号を消す */
+	position: relative;    /* ★サブメニュー表示の基準位置にする */
+ }
+
+ ul.ddmenu a {
+	display: block;            /* ★項目内全域をリンク可能にする */
+ }
+ 
+ul.ddmenu li:active ul {
+	display: block;  
+	width: 120px;    /* ★マウスポインタが載っている項目の内部にあるリストを表示する */
+}
+
+ul.ddmenu ul {
+margin: 0px;         /* ★サブメニュー外側の余白(ゼロ) */
+padding: 0px;        /* ★サブメニュー内側の余白(ゼロ) */
+display: none;       /* ★標準では非表示にする */
+position: absolute;  /* ★絶対配置にする */
+}
+
+.wrap{
+	display: flex;
+}
+
+.name{
+	margin-bottom: 50px;
+	margin-right: 80px;
 }

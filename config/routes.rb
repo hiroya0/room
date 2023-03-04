@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'reservations', to: 'reservations#index'
   post 'reservations/show', to: 'reservations#show'
   get 'room/show'
-  
+
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
   get "users/show" => "users#show"

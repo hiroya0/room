@@ -8,7 +8,7 @@
                     <% if results.room_image? %>
                        <%= image_tag results.room_image_url if results.room_image.present? %>
                        <%else%>
-                       <p>"画像なし"</p>
+                       <%= image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png",size: "300x200" %>
                     <%end%>
                     </div>
 
@@ -16,7 +16,7 @@
                     <%= link_to results do %>
                         <h1><%= results.name %></h1>
                     <% end %>
-                        <h4>コメント<%= results.introduction %></h4>
+                        <h4>コメント:<%= results.introduction %></h4>
                         <h4>エリア名：<%= results.address %></h4>
                         <h4>金額：<%= results.price %>円</h4>
                     </div>
