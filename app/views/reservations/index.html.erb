@@ -51,10 +51,10 @@
   <td><%= image_tag reservation.room.room_image.url,size: "200x150" %></td>
   <td><%= reservation.room.name  %></td>
   <td><%= reservation.people  %></td>
-  <td><%= reservation.startday  %></td>
-  <td><%= reservation.endday %></td>
+  <td><%= reservation.startday.strftime('%Y/%m/%d')  %></td>
+  <td><%= reservation.endday.strftime('%Y/%m/%d') %></td>
   <td><%= reservation.room.price * reservation.people * (reservation.endday - reservation.startday).to_i %></td>
-  <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+  <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
   <td><%= link_to "削除", reservation, method: :delete, 
          data: { confirm: "本当に削除しますか？" } %> </td>
 </tr>
