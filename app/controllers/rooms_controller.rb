@@ -1,22 +1,22 @@
 class RoomsController < ApplicationController
   before_action :set_q, only: [:index, :search]
+  before_action :authenticate_user!
 
   def index
-    @user = current_user
+    @user = current_user.id
     @rooms = Room.all
    
   end
 
   def new
-    @user = current_user
+    @user = current_user.id
     @room = Room.new
   end
 
   def create
-    @user = current_user
     @room = Room.new(params.require(:room).permit(:name, :introduction, :address, :price, :room_image))
     @room.user_id = current_user.id
-    if @room.save
+    if @room.save!
     
       flash[:success] = "部屋を新規登録しました"
       redirect_to rooms_path
@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = current_user.id
 		@room = Room.find(params[:id]) 
     
 		@reservation = Reservation.new

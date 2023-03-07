@@ -22,18 +22,19 @@
 <% if current_user.image? %>  
         <%= image_tag current_user.image.url,size: "100x100" %>
         <% else %>
-        <%= image_tag "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" %>
+        <%= image_tag "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png"  %>
     <% end %>
 </div>
 
 </header>
+
 <a href="javascript:history.back()">[戻る]</a>
 <h3>部屋の登録済み一覧</h3>
  
 <% if flash[:success] %>
    <p class="notice"><%= flash[:success] %></p>
  <% end %>
-
+ 
  <table>
    <thead>
      <th>画像</th>
@@ -45,10 +46,11 @@
        <th>作成日</th>
      </tr>
    </thead>
- 
+  
    <tbody>
         <tr>
      <% @rooms.each do |room| %>
+    <% if user_signed_in? && current_user.id== room.user_id  %>
         <td><%= image_tag room.room_image.url ,size: "200x150" %></td>
        
        <td><%= room.id %></td>
@@ -62,7 +64,7 @@
          <td><%= link_to "削除", room, method: :delete, 
          data: { confirm: "本当に削除しますか？" } %> </td>
          
-         
+    <%end%>     
          </tr>
      <% end %>
    </tbody>

@@ -1,21 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @users = User.all
+    @user = current_user
     @q = Room.ransack(params[:q])
     @rooms = @q.result(distinct: true).includes(:user).order("created_at desc")
   end
   
-
-  def new
-    
-  end
-
-  def create
-  end
-
   def show
     @user = current_user
-    
   end
 
   def edit

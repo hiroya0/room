@@ -1,14 +1,16 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
-    @user_id = current_user.id
+    @user = current_user
    
     @reservations = Reservation.all
    
   end
   
     def create
+      @user = current_user
       @room = Room.find(params[:reservation][:room_id])
-      @user = User.find(current_user.id)
       @reservation = Reservation.new(params.require(:reservation).permit(:startday, :endday, :people, :totalprice, :totalday, :room_id, :user_id))     
      
       if @reservation.save
@@ -29,8 +31,7 @@ class ReservationsController < ApplicationController
 
     def show
       flash[:success] = "予約が完了しました"
-      @user_id = current_user.id
-      
+      @user = current_user
       @reservation = Reservation.find(params[:id])
      
     end
