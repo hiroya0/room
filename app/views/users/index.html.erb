@@ -1,0 +1,96 @@
+<% if user_signed_in? %>
+<body>
+<header>
+<h2>Potepan Shere</h2>
+<div class=wrap>
+<div class = name>
+<span>ログイン中のユーザー</span>
+<div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+<a style="cursor:pointer;"><%= current_user.nickname %></a>
+</div>
+<div id="open" style="display:none;clear:both;">
+<ul>
+        <li><a><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></a></li>
+        <li><a><%= link_to "部屋の新規登録", "/rooms/new" %></a></li>
+        <li><a><%= link_to "部屋の登録済み一覧", "/rooms/" %></a></li>
+        <li><a><%= link_to "予約一覧", "/reservations/" %></a></li>
+        <li><a><%= link_to "アカウント設定", "/users/show" %></a></li>
+        <li><a><%= link_to "ホーム画面へ", "/users/index" %></a></li>
+</ul>
+</li>
+</div>
+</div>
+
+<% if current_user.image? %>  
+        <%= image_tag current_user.image.url,size: "100x100" %>
+        <% else %>
+        <%= image_tag "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png",size: "100x100"  %>
+    <% end %>
+</div>
+
+</header>
+
+<div class = top>
+
+<div class = toppage>
+<p class = top-logo>Potepan Shareで<br>まだ体験したことのない旅をしよう</p>
+</div>
+
+<div class = "search_index">
+            
+<%= search_form_for @q, url: search_rooms_path do |f| %>
+    <%= f.label :name_or_introduction_cont ,"キーワード検索" %></br>
+    <%= f.search_field :name_or_introduction_cont%>
+<p><%= f.submit "探す"%></p>
+<% end %>
+
+</div>
+
+<div class = "all_spots">
+
+<div class="item"> 
+    <div class="spot">    
+        <span>東京</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/tokyo.jpg" ), search_rooms_path(q:{address_cont: "東京"}) %>
+    </div>
+</div>
+
+<div class="item"> 
+    <div class="spot">  
+        <span>大阪</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/osaka.jpg"), search_rooms_path(q:{address_cont: "大阪"}) %>
+    </div>
+</div>
+
+<div class="item"> 
+    <div class="spot">
+        <span>京都</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/kyoto.jpg"), search_rooms_path(q:{address_cont: "京都"}) %>
+    </div>  
+</div>
+
+<div class="item"> 
+    <div class="spot">
+        <span>札幌</span>
+        <%= link_to image_tag("https://rails-02-sample.herokuapp.com/assets/home/recommend-area/sapporo.jpg"), search_rooms_path(q:{address_cont: "札幌"}) %>
+    </div>          
+</div>
+
+</div>
+
+
+</body>
+<% else %>
+<header>
+<h2>Potepan Shere</h2>
+<div>
+<a><%= link_to "ログイン", "/users/sign_in" %></a>
+<a><%= link_to "新規登録", "/users/sign_up" %></a>
+</div>
+</header>
+<div class = top>
+<p class = top-logo>Potepan Shareで<br>まだ体験したことのない旅をしよう</p>
+</div>
+<% end %>
+
+

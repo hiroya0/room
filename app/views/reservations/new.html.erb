@@ -1,0 +1,49 @@
+<table>
+<%= render "shared/error", obj: @reservation%>
+<tr>
+<% if @room.room_image? %>  
+<td>
+    <%= image_tag @room.room_image.url,size: "200x150" %></td>
+    <% else %>
+    <td>"画像なし"</td>
+    <% end %>
+   </td>
+</tr>
+<tr>
+  <td><%= @room.name %></td>
+</tr>
+<tr>
+  <td><%= @room.address %></td>
+</tr>
+<tr>
+  <td><%= @room.introduction %></td>
+</tr>
+<tr>
+  <td><%= @room.price %>円</td>
+</tr>
+
+</table>
+<%= form_with model: @reservation do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_id, value: @room.id%>
+  
+  <table>
+  <tr>
+    <th><%= f.label :startday ,"開始日" %></th>
+    <td><%= f.date_field :startday %></td>
+  </tr>
+
+  <tr>
+    <th><%= f.label :endday ,"終了日" %></th>
+    <td><%= f.date_field :endday %></td>
+  </tr>
+
+  <tr>
+    <th><%= f.label :people ,"人数" %></th>
+    <td><%= f.number_field :people %></td>
+  </tr>
+</table>
+  <%= f.submit "予約を確定"%>
+  <%= link_to "ルーム詳細に戻る", :back %>
+<% end %>
+

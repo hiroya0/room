@@ -1,0 +1,73 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+header{
+	background-color: #fbc25b;
+	display: flex;
+	justify-content: space-between;
+}
+
+.top{
+	background-image: url(https://images.microcms-assets.io/assets/03297a0e5b65401a9126d29bcac1d2e0/6f52943cffcf475789d774fae6c52196/%E3%82%B5%E3%83%A0%E3%83%8D%E3%82%A4%E3%83%AB_%E3%82%84%E3%81%A3%E3%81%A4.jpg?w=1024);
+	background-size: cover;
+	padding-bottom:60% ;
+}
+
+.toppage{
+	display: flex;
+	justify-content: center;
+}
+
+.top-logo{
+	font-size: 30px;
+	color: rgb(226, 12, 69);
+	font-weight:bold;
+}
+
+.all_spots{
+	display: flex;
+}
+
+.spot{
+	margin: 10px 5px;
+}
+
+.spot img{
+	width: 100%;
+    height: 300px;
+}
+
+.item{
+	flex-basis: 100%;
+}
+
+ ul.ddmenu li {
+	display: inline-block; /* ★横並びに配置する */
+	list-style-type: none; /* ★リストの先頭記号を消す */
+	position: relative;    /* ★サブメニュー表示の基準位置にする */
+ }
+
+ ul.ddmenu a {
+	display: block;            /* ★項目内全域をリンク可能にする */
+ }
+ 
+ul.ddmenu li:active ul {
+	display: block;  
+	width: 120px;    /* ★マウスポインタが載っている項目の内部にあるリストを表示する */
+}
+
+ul.ddmenu ul {
+margin: 0px;         /* ★サブメニュー外側の余白(ゼロ) */
+padding: 0px;        /* ★サブメニュー内側の余白(ゼロ) */
+display: none;       /* ★標準では非表示にする */
+position: absolute;  /* ★絶対配置にする */
+}
+
+.wrap{
+	display: flex;
+}
+
+.name{
+	margin-bottom: 50px;
+	margin-right: 80px;
+}
